@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <title>The Psychic Game</title>
+  </head>
+  <body>
+  <div id="game">	
+  	<h1>The Psychic Game</h1>
+
+	<p>Press Any Letter To Begin</p>
+
+  
+  <script type="text/javascript">
+  	
+  	var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+  	var wins = 0;
+  	var losses = 0;
+  	var guessesLeft = 10;
+    var allGuesses = [];
+    
+    var userText = document.getElementById("user-text");
+
+    document.onkeyup = function() {
+      userText.textContent = event.key;
+     };
+
+  	document.getElementById("guessesSoFar");
+  	
+    document.onkeyup = function(event) {
+
+    var userGuess = event.key;
+        allGuesses.push(userGuess);
+        allGuesses.join(userGuess);
+
+  		var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+  		if ((userGuess === "a") || (userGuess === "b") || (userGuess === "c") || (userGuess === "d") || (userGuess === "e") || (userGuess === "f") || (userGuess === "g") || (userGuess === "h") || (userGuess === "i") || (userGuess === "j") || (userGuess === "k") || (userGuess === "l") || (userGuess === "m") || (userGuess === "n") || (userGuess === "o") || (userGuess === "q") || (userGuess === "r") || (userGuess === "s") || (userGuess === "t") || (userGuess === "u") || (userGuess === "v") || (userGuess === "w") || (userGuess === "x") || (userGuess === "y") || (userGuess === "z")) { 
+      
+   
+
+  		  if ((userGuess === computerGuess)) {
+            wins++; 
+            alert("You won that round, Play Again?");
+            allGuesses = [];
+          }
+
+          else if ((userGuess != computerGuess)) {
+          	console.log ("Try again!"); guessesLeft--;
+          }
+
+
+          if ((guessesLeft < 0)) {
+        		losses++;
+        		alert("Sorry you lost that round, try again?");
+            guessesLeft = 10;
+            allGuesses = [];
+          }
+  
+
+          var html = "<p><h1>The Psychic Game</h1></p>"+
+          "<p>Guess what letter I'm thinking of:</p>"+
+         "<p>Wins: " + wins + "</p>" +
+          "<p>Losses: " + losses + "</p>" +
+          "<p>Guesses Left: " + guessesLeft + "</p>"+
+          "<p>Guesses So Far: " + allGuesses + "</p>"
+
+  		    document.querySelector("#game").innerHTML = html;
+
+}
+ };
+
+  </script>
+
+	</div>
+  
+  </body>
+
+
+
+</html>
